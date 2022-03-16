@@ -23,7 +23,7 @@ sys.path.append(os.path.abspath("SO_site-packages"))
 
 #file selection interface
 print("===Initiating translationAssistant===")
-files = os.listdir()
+files = os.listdir("Output/")
 lowerfiles = []
 for file in files[1:]:
     print(file)
