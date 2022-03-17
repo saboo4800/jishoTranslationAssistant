@@ -31,6 +31,7 @@ for file in files[1:]:
     lowerfiles.append(file.lower())
 fName = input("===Choose a file from the existing files or input a new filename: ")
 #compares the inputted file name to lowercase versions of exisiting file names. Ergo, this is not case sensitive
+os.chdir("Output/")
 if fName.lower() in lowerfiles:
     fh = open(fName,"a")
     print("===File opened")
@@ -71,7 +72,6 @@ while True:
             print(json.dumps(js, indent=4, ensure_ascii=False))
             continue
 
-
         print('writing to file')
         #print(json.dumps(js, indent=4, ensure_ascii=False))
         iter = 0
@@ -84,23 +84,23 @@ while True:
             if containNum(item['slug']):
                 continue
             slug = item["slug"]
-            #print('slug found')
+            print('slug found')
             reading = item["japanese"][0]["reading"]
-            #print('reading found')
+            print('reading found')
             fh.write("Word: ")
-            #print('word written')
+            print('word written')
             fh.write(slug+'\n')
-            #print('slug written')
+            print('slug written')
             fh.write("Reading: ")
             fh.write(reading+'\n')
-            #print('reading written')
+            print('reading written')
             fh.write("Definition: ")
             for item in js["data"][iter]["senses"][0]["english_definitions"]:
                 fh.write(item + "|")
-                #print('definition written')
+                print('definition written')
             fh.write('\n')
             iter +=1
-            #print(iter)
+            print(iter)
         fh.write(url + "\n")
         fh.write("===========\n")
         #skips buffer and writes to file immediately
@@ -109,32 +109,3 @@ while True:
         print("copy a word to your clipboard to continue")
     time.sleep(1.0)
 fh.close()
-
-'''
-        if index_in_list(js["data"],1):
-            print("Retrieving word - 2")
-            print("====Definition 1",js["data"][0]["japanese"],js["data"][0]["senses"][0]["english_definitions"])
-            print("====Definition 2",js["data"][1]["japanese"],js["data"][1]["senses"][0]["english_definitions"])
-            print(url)
-            continue
-        else:
-            print("Retrieving word - 1")
-            #print(json.dumps(js, indent=4, ensure_ascii=False))
-            print("====Definition 1",js["data"][0]["japanese"],js["data"][0]["senses"][0]["english_definitions"])
-            print(url)
-            continue
-            '''
-#NEEDS TESTING - '死傷者'
-'''Looking up: 開かれ
-making url
-loading json
-writing to file
-Traceback (most recent call last):
-  File "translationAssistant_MAIN.py", line 79, in <module>
-    reading = item["japanese"][0]["reading"]
-KeyError: 'reading'
-
-KeyError: ’word' on なり
-
-
-'''
